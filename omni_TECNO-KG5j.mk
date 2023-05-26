@@ -1,28 +1,37 @@
 #
-# Copyright (C) 2023 The Android Open Source Project
-# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2022 The Android Open Source Project
+# Copyright (C) 2022 SebaUbuntu's TWRP device tree generator
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Inherit from TECNO-KG5j device
-$(call inherit-product, device/tecno/TECNO-KG5j/device.mk)
+# Inherit from KG5j device
+$(call inherit-product, device/tecno/KG5j/device.mk)
 
-PRODUCT_DEVICE := TECNO-KG5j
-PRODUCT_NAME := omni_TECNO-KG5j
-PRODUCT_BRAND := TECNO
-PRODUCT_MODEL := TECNO KG5j
-PRODUCT_MANUFACTURER := tecno
+# Inherit some common twrp stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
 
-PRODUCT_GMS_CLIENTID_BASE := android-tecno
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := KG5j
+PRODUCT_NAME := twrp_KG5j
+PRODUCT_BRAND := tecno
+PRODUCT_MODEL := KG5j
+PRODUCT_MANUFACTURER := Tecno Mobility Limited
+PRODUCT_RELEASE_NAME := Tecno Spark 8C
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="vnd_kg5j_h6126-user 11 RP1A.200720.011 110919 release-keys"
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31 \
+        ro.bootimage.build.date.utc=0 \
+            ro.build.date.utc=0
 
-BUILD_FINGERPRINT := TECNO/KG5j-OP/TECNO-KG5j:11/RP1A.200720.011/220929V405:user/release-keys
+            # Fastbootd
+            PRODUCT_PACKAGES += \
+                android.hardware.fastboot@1.0-impl-mock
