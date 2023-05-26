@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/tecno/TECNO-KG5j
+LOCAL_PATH := device/tecno/KG5j
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -21,11 +21,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     bootctrl.mt6761
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.mt6761 \
-    libgptutils \
-    libz \
-    libcutils
+
+
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
