@@ -28,10 +28,10 @@ PRODUCT_RELEASE_NAME := Tecno Spark 8C
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2099-12-31 \
-        ro.bootimage.build.date.utc=0 \
-            ro.build.date.utc=0
+  ro.vendor.build.security_patch=2099-12-31 \
+  ro.bootimage.build.date.utc=0 \
+  ro.build.date.utc=0
 
-            # Fastbootd
-            PRODUCT_PACKAGES += \
-                android.hardware.fastboot@1.0-impl-mock
+# Fastbootd
+  PRODUCT_PACKAGES += \
+  android.hardware.fastboot@1.0-impl-mock
