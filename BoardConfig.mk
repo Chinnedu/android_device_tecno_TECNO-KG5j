@@ -1,7 +1,3 @@
-#
-# Copyright (C) 2023 The Android Open Source Project
-# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
-#
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -100,11 +96,27 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
-# TWRP Configuration
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+BORAD_USES_METADATA_PARTITION :=true
+TW_INCLUDE_FBE_METADATA_DECRYPT =:true
+
+# TWRP-Specific configuration
 TW_THEME := portrait_hdpi
+TW_DEVICE_VERSION := TWRP 3.7 Built by KELEXINE. @kelexine XDA +2349066478245
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_USES_MKE2FS := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_DEFAULT_BRIGHTNESS := 1200
+TW_MAX_BRIGHTNESS := 2047
+TW_Y_OFFSET := 80
+TW_H_OFFSET := -80
+TW_EXCLUDE_PYTHON := true
+TW_EXCLUDE_NANO := true
+TW_EXCLUDE_TWRPAPP := true
 TW_EXTRA_LANGUAGES := true
+TW_NO_SCREEN_BLANK := true
 TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
-TW_BUILD_VERSION := Build by chinedu +2349039121780
+TW_HAS_MTP := true
